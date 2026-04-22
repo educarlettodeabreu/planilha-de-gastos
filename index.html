@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>controle de gastos</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+        <main>
+            <div id="console">
+                <h1>planilha de gastos</h1>
+                <h2 id="total">total:</h2>
+                        <input type="text" id="nomegasto" placeholder="nome do gasto">
+                        <input type="number" id="valorgasto" placeholder="valor">
+                        <p>
+                            <button id="limpar">limpar</button>
+                            <button id="somar">adicionar</button>
+                        </p>
+            </div>
+             
+                <ul id="planilha"></ul>
+        </main>
+
+    <script>
+
+      let tabela = document.getElementById("planilha");
+      let gastos = JSON.parse(localStorage.getItem("gastos")) || [];
+      const botao = document.getElementById("somar");
+      const limpar = document.getElementById("limpar");
+      
+      let nomegasto = document.getElementById("nomegasto");
+        
+      let valorgasto = document.getElementById("valorgasto");
+
+       function atualizartotal() {
+        let soma = 0 
+
+        for (let g of gastos) {
+            soma+= g.valor
+        }
+
+        document.getElementById("total").textContent = "Total: R$ " + soma;
+
+       };
+
+       function renderizar () {
+        tabela.innerHTML = "";
+
+        for (let g of gastos) {
+            let li = document.createElement("li");
+            li.textContent = g.texto + ": R$ " + g.valor;
+
+            let btn = document.createElement("button");
+            btn.textContent = "x";
+
+            btn.addEventListener("click", () => {
+                gastos = gastos.filter(item => item !== g);
+                salvar();
+                renderizar();
+            });
+
+            li.appendChild(btn);
+            tabela.appendChild(li);
+        }
+
+        atualizartotal();
+
+       };
+
+       function salvar () {
+        localStorage.setItem("gastos", JSON.stringify(gastos));
+       }
+
+      botao.addEventListener("click", () => {
+
+        let texto = nomegasto.value
+        
+        let valor = Number(valorgasto.value);
+
+        if (texto === "" || isNaN(valor) || valor <= 0) {
+            alert("preencha corretamente");
+            return;
+        };
+
+        let novogasto = {texto: texto,valor: valor};
+
+        gastos.push(novogasto);
+        salvar();
+        renderizar();
+
+        nomegasto.value = "";
+        valorgasto.value = "";
+        nomegasto.focus();
+        
+
+        
+      });
+
+
+      limpar.addEventListener("click", () => {
+
+        nomegasto.value = "";
+        valorgasto.value = "";
+        
+
+      });
+
+      renderizar();
+
+
+    </script>
+</body>
+</html>

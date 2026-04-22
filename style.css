@@ -1,0 +1,123 @@
+@charset "UTF-8";
+
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        background: gray;
+        
+        
+
+    }
+
+    #console {
+        border: 2px solid gray;
+        box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.459);
+        border-radius: 10px;
+    }
+
+    h1 {
+        background: linear-gradient(to right, black, white);
+        color: white;
+        padding: 10px;
+        text-shadow: 2px 2px 2px rgb(26, 21, 21);
+        text-align: center;
+    }
+
+    h2 {
+    margin-left: 20px;
+    padding: 5px;
+
+
+    }
+
+    #nomegasto, #valorgasto{
+        margin: 5px;
+        height: 20px;
+        border: 2px solid black;
+        border-radius: 3px;
+        padding: 2px;
+    }
+
+    #limpar, #somar {
+
+        padding: 6px;
+        margin: 10px;
+        margin-right: 5px;
+        background: black;
+        color: white;
+        border-radius: 10px;
+        font-weight: 800;
+        transition: 0.1s;
+        
+
+    }
+
+    #limpar:hover, #somar:hover {
+        border: 2px solid white;
+    }
+
+    #limpar:active, #somar:active {
+        transform: scale(0.9);
+
+
+    }
+    ul {
+        max-width: 980px;
+        margin: auto;
+    }
+    li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: 2px solid black;
+        height: 20px;
+        padding: 10px;
+        padding-right: 0;
+        list-style: none;
+        background: white;
+        font-weight: 600;
+
+    }
+    li:hover {
+    
+        background: gray;
+        color: white;
+
+    }
+    li > button {
+        height: 40px;
+        width: 40px;
+        border: 1px solid black;
+        box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.712);
+    }
+
+    li > button:hover {
+
+        background: red;
+        color: white;
+        
+    }
+
+    li > button:active {
+        box-shadow: inset 2px 2px 2px darkred;
+        background: red;
+        color: white;
+    }
+
+    main {
+        max-width: 1000px;
+        height: 100vh;
+        margin: auto;
+        background: lightgray;
+        border-radius: 20px;
+        overflow: auto;
+        box-shadow: 4px 4px 7px rgba(0, 0, 0, 0.384);
+
+    }
+    input::placeholder {
+        font-style: italic;
+    }
+
