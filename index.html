@@ -7,7 +7,7 @@
 
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="manifest" href="manifest.json">
+    <link rel="manifest" href="./manifest.json">
     <meta name="theme-color" content="#000000">
     
 </head>
@@ -115,7 +115,7 @@
       renderizar();
 
         if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("sw.js")
+    navigator.serviceWorker.register("./sw.js")
         .then(() => console.log("SW rodando"));
         }
 
